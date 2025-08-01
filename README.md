@@ -10,15 +10,7 @@ This is a package that makes MDROBOT's motor driver available in ROS2(humble). [
 
 # how
 
-/cmd_vel
-↓
-Parse linear.x, angular.z
-↓
-Compute v_left, v_right using differential model
-↓
-Convert to RPM
-↓
-Publish to /cmd_rpm_left and /cmd_rpm_right
+/cmd_vel -> Parse linear.x, angular.z -> Compute v_left, v_right using differential model -> Convert to RPM -> Publish to /cmd_rpm_left and /cmd_rpm_right
 
 ## motor driver setup(port, buadrate ...)
 in launch/md_controller.launch.py
@@ -44,31 +36,29 @@ To install it, follow the steps below. (의존성 패키지인 serial-ros2는 �
 ~$ cd build
 ~$ sudo make install
 ```
-# run
-
 ## build
 
 ~$ cd MD_controller
 
 ~/MD_controller$ colcon build
 
-+ Terminal 1
+# Terminal 1
 
-## setup
++ setup
 
 ~$ source ~/MD_controller/install/local_setup.bash
 
-## run cmd_vel_to_rpm
++ run cmd_vel_to_rpm
 
 ~$ ros2 run md_controller cmd_vel_to_rpm
 
-+ Terminal 2
+# Terminal 2
 
-## setup
++ setup
 
 ~$ source ~/MD_controller/install/local_setup.bash
 
-## run motor controller
++ run motor controller
         
 ~$ ros2 launch md_controller md_controller.launch.py
 
