@@ -37,29 +37,28 @@ To install it, follow the steps below. (의존성 패키지인 serial-ros2는 �
 ~$ sudo make install
 ```
 ## build
-
+```
 ~$ cd MD_controller
-
 ~/MD_controller$ colcon build
-
+```
 # Terminal 1
 
 + setup
-
+```
 ~$ source ~/MD_controller/install/local_setup.bash
-
+```
 + run cmd_vel_to_rpm
-
+```
 ~$ ros2 run md_controller cmd_vel_to_rpm
-
+```
 # Terminal 2
 
 + setup
-
-~$ source ~/MD_controller/install/local_setup.bash
-
-+ run motor controller
-        
-~$ ros2 launch md_controller md_controller.launch.py
-
 ```
+~$ source ~/MD_controller/install/local_setup.bash
+```
++ run motor controller
+```        
+~$ ros2 launch md_controller md_controller.launch.py
+```
+
