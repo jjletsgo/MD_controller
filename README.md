@@ -2,6 +2,24 @@
 # MD_controller
 This is a package that makes MDROBOT's motor driver available in ROS2(humble). [ https://www.mdrobot.co.kr ]
 
+
+
+# rqt_graph
+
+<img src="docs/rqt_graph.png"/>
+
+# how
+
+/cmd_vel
+↓
+Parse linear.x, angular.z
+↓
+Compute v_left, v_right using differential model
+↓
+Convert to RPM
+↓
+Publish to /cmd_rpm_left and /cmd_rpm_right
+
 ## motor driver setup(port, buadrate ...)
 in launch/md_controller.launch.py
 
@@ -13,7 +31,7 @@ Change parameters suitable for motor driver and motor.
 There is no official release of the serial package available for ROS2, so you need to install an unofficial version that is compatible with ROS2.
 
 ```
-To install it, follow the steps below.
+To install it, follow the steps below. (의존성 패키지인 serial-ros2는 따로 git clone 해주셔야 합니다)
 
 ~$ git clone https://github.com/RoverRobotics-forks/serial-ros2.git
 ~$ cd serial-ros2
@@ -26,14 +44,32 @@ To install it, follow the steps below.
 ~$ cd build
 ~$ sudo make install
 ```
+# run
 
-## run
-```
-#run motor controller
+## build
+
+~$ cd MD_controller
+
+~/MD_controller$ colcon build
+
++ Terminal 1
+
+## setup
+
+~$ source ~/MD_controller/install/local_setup.bash
+
+## run cmd_vel_to_rpm
+
+~$ ros2 run md_controller cmd_vel_to_rpm
+
++ Terminal 2
+
+## setup
+
+~$ source ~/MD_controller/install/local_setup.bash
+
+## run motor controller
         
 ~$ ros2 launch md_controller md_controller.launch.py
 
-#control motor
-
-~$ ros2 run md_teleop md_teleop_key_node
 ```
