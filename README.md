@@ -60,3 +60,11 @@ To install it, follow the steps below. (의존성 패키지인 serial-ros2는 �
 ~$ ros2 launch md_controller md_controller.launch.py
 ```
 
+# Terminal 3
+
++ Test
+
+```
+ros2 topic pub -r 1 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+```
+
